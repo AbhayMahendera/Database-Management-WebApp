@@ -1,3 +1,6 @@
+console.log ("Assignment 1 - Abhay Mahendera | 174811216 | abhay-mahendera@myseneca.ca\n------------------------------------------------------------------------\n" );
+
+
 const EventEmitter = require('events');
 
 class TrafficLight extends EventEmitter {
@@ -30,7 +33,11 @@ class TrafficLight extends EventEmitter {
   }
 }
 
+
+
 const trafficLight = new TrafficLight();
+
+
 
 trafficLight.on('colorChange', (color) => {
   console.log('The light just changed to', color);
