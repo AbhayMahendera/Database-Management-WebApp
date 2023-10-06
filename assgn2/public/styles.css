@@ -1,20 +1,15 @@
-
-
 /* Background */
 body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-     font-family: 'SpaceFont', sans-serif; /* Use a space-themed font */
+    font-family: 'SpaceFont', sans-serif; /* Use a space-themed font */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
 }
-
-
-
 
 /* Center the login form */
 .w-full.max-w-xs {
@@ -62,7 +57,6 @@ body {
     background: linear-gradient(45deg, #2779bd, #3490dc);
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
 }
-
 
 /* Remove margin on the bottom of input elements */
 .mb-4,

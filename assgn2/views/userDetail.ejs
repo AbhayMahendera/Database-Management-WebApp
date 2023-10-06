@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/styles.css"> <!-- Include your custom CSS file -->
+    <title>User Details</title>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <h1 class="text-3xl font-semibold mb-4">User Details</h1>
+        <div class="bg-white p-4 rounded-lg shadow-md">
+            <ul>
+                <li class="mb-2"><strong>Name:</strong> <%= user.firstName %> <%= user.lastName %></li>
+                <li class="mb-2"><strong>Email:</strong> <%= user.email %></li>
+                <li class="mb-2"><strong>Date of Birth:</strong> <%= user.dob %></li>
+                <li class="mb-2"><strong>Company:</strong> <%= user.company %></li>
+                <li class="mb-2"><strong>Phone:</strong> <%= user.phone %></li>
+            </ul>
+            <a href="/list" class="text-blue-500 hover:underline mt-4 block">Back to List</a>
+        </div>
+    </div>
+</body>
+</html>

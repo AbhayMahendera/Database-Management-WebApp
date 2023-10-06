@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/styles.css"> <!-- Include your custom CSS file -->
+    <title>User List</title>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <h1 class="text-3xl font-semibold mb-4">User List</h1>
+        <ul>
+            <% users.forEach(function(user) { %>
+                <li class="mb-4 p-4 border border-gray-300 rounded-lg shadow-md">
+                    <a href="/user/<%= user.id %>" class="text-blue-500 hover:underline"><%= user.firstName %> <%= user.lastName %></a>
+                </li>
+            <% }); %>
+        </ul>
+        <!-- Pagination links can be added here -->
+    </div>
+</body>
+</html>
