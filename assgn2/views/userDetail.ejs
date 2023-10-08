@@ -12,11 +12,14 @@
         <h1 class="text-3xl font-semibold mb-4">User Detail</h1>
         <!-- Display details of an individual user -->
         <div class="p-4 border border-gray-300 rounded-lg shadow-md">
+            <p>ID: <%= user.id %></p>
             <p>Name: <%= user.firstName %> <%= user.lastName %></p>
             <p>Email: <%= user.email %></p>
+            <p>Date of Birth: <%= user.dob %></p>
             <p>Company: <%= user.company %></p>
-           </div>
-        <!-- Include a link to go back to the list view -->
+            <p>Phone: <%= user.phone %></p>
+        </div>
+          <!-- Include a link to go back to the list view -->
         <a href="/list" class="text-blue-500 hover:underline mt-4">Back to List</a>
     </div>
 </body>
