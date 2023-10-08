@@ -19,6 +19,14 @@
             <% }); %>
         </ul>
         <!-- Pagination links can be added here -->
+        <div class="mt-4">
+            <% if (currentPage > 1) { %>
+                <a href="/list?page=<%= currentPage - 1 %>" class="text-blue-500 hover:underline">Previous</a>
+            <% } %>
+            <% if (users.length === 25) { %>
+                <a href="/list?page=<%= currentPage + 1 %>" class="text-blue-500 hover:underline ml-4">Next</a>
+            <% } %>
+        </div>
     </div>
 </body>
 </html>
