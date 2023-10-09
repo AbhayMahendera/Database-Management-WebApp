@@ -11,7 +11,7 @@
 - [Getting Started](#getting-started)
 - [User Authentication](#user-authentication)
 - [List View and Pagination](#list-view-and-pagination)
-- [Detail Page](#detail-page))
+- [Detail Page](#detail-page)
 
 ## Introduction
 
