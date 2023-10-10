@@ -1,6 +1,6 @@
 # WEB322NFF-Abhay-Mahendera
 
-Welcome to the repository for WEB322NFF assignments and practice by Abhay Mahendera. This repository contains a collection of assignments and practice exercises completed during the WEB322 course at Seneca College.
+Welcome to the repository for WEB322NFF assignments. This repository contains a collection of assignments completed during the WEB322 course at Seneca College.
 
 ## Table of Contents
 
