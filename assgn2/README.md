@@ -28,7 +28,7 @@ Before running the application, ensure you have the following prerequisites inst
 1. **Clone the Repository:**
 
    ```bash
-   git clone <[repository-url](https://github.com/AbhayMahendera/WEB322-Abhay-Mahendera)>
+   git clone <[https://github.com/AbhayMahendera/WEB322-Abhay-Mahendera](https://github.com/AbhayMahendera/WEB322-Abhay-Mahendera)>
    cd assgn2
    ```
 
