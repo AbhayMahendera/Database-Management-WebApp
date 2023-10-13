@@ -12,7 +12,7 @@ Welcome to the repository for WEB322NFF assignments. This repository contains a 
 
 ## About the Repository
 
-This repository serves as a platform to showcase my work and progress throughout the WEB322 course. The assignments and practice exercises included here are meant to demonstrate my understanding of web development concepts, technologies, and best practices.
+This repository serves as a platform to showcase my work and progress throughout the WEB322 course. The assignments included here are meant to demonstrate my understanding of web development concepts, technologies, and best practices.
 
 ## Assignments
 
