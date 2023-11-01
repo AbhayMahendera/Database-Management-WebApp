@@ -25,6 +25,6 @@ You will find a collection of assignments completed as part of the WEB322 course
 - **Student Number:** 174811216
 - **Email:** abhay-mahendera@myseneca.ca
 - **Section:** WEB322NFF
-<img src="https://www.senecacollege.ca/content/dam/projects/seneca/seneca-logo.svg" width="300">
+<img src="https://www.senecacollege.ca/content/dam/projects/seneca/seneca-logo.svg" width="270">
 
 
