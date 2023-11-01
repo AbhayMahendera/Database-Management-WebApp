@@ -26,3 +26,5 @@ You will find a collection of assignments completed as part of the WEB322 course
 - **Email:** abhay-mahendera@myseneca.ca
 - **Section:** WEB322NFF
 ![image](https://github.com/AbhayMahendera/WEB322-Abhay-Mahendera/assets/81372552/a9336b7f-76c0-4497-abef-7fb34ae07240)
+<img src="[path/to/your/image.png](https://download.logo.wine/logo/Seneca_College/Seneca_College-Logo.wine.png)https://download.logo.wine/logo/Seneca_College/Seneca_College-Logo.wine.png" width="300">
+
