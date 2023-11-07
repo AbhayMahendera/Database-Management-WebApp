@@ -15,25 +15,29 @@
 <body class="bg-gray-900 text-white">
     <div class="container mx-auto py-8">
         <!-- Navigation bar -->
-        <div class="nav-bar flex justify-end pr-4">
-            <a href="/" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline">Home</a>
+        <div class="flex justify-end pr-4">
+            <a href="/" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline">Logout</a>
         </div>
-        <div class="container mx-auto py-8">
+
+        <div class="py-8">
             <h1 class="text-3xl font-semibold mb-4 text-center">User List</h1>
+
             <!-- Display a list of users -->
-            <ul class="LoggedInList">
+            <ul class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 <% users.forEach(function(user) { %>
-                    <li class="mb-4 p-4 border border-gray-700 rounded-lg shadow-md bg-gray-800 bg-opacity-70">
-                        <a href="/user/<%= user.id %>" class="text-blue-400 hover:underline"> <%= user.id %> : <%= user.firstName %> <%= user.lastName %></a>
+                    <li class="p-4 border border-gray-700 rounded-lg shadow-md bg-gray-800 bg-opacity-70">
+                        <a href="/user/<%= user.id %>" class="text-blue-400 hover:underline block"> <%= user.id %> : <%= user.firstName %> <%= user.lastName %></a>
                     </li>
                 <% }); %>
             </ul>
-            <div class="mt-4 flex justify-center">
+
+            <!-- Pagination -->
+            <div class="mt-8 flex justify-center">
                 <% if (currentPage > 1) { %>
                     <a href="/LoggedInList?page=<%= currentPage - 1 %>" class="text-blue-400 hover:underline mr-4">Previous</a>
                 <% } %>
                 <% if (users.length === 25) { %>
-                    <a href="/LoggedInlist?page=<%= currentPage + 1 %>" class="text-blue-400 hover:underline">Next</a>
+                    <a href="/LoggedInList?page=<%= currentPage + 1 %>" class="text-blue-400 hover:underline">Next</a>
                 <% } %>
             </div>
         </div>
