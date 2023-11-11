@@ -1,3 +1,4 @@
+
 // Import required modules
 const express = require("express");
 const fs = require("fs");
@@ -6,7 +7,7 @@ const ejs = require('ejs');
 
 // Create an Express application
 const app = express();
-const port = 3000;
+const port = 8000;
 
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
