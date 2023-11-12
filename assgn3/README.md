@@ -54,15 +54,15 @@ Before running the application, ensure you have the following prerequisites inst
 ### Users
 
 - **GET /api/users:** Returns all users as a JSON array.
-- **GET /api/users/:id:** Returns a single user by ID as JSON.
-- **DELETE /api/users/:id:** Deletes a single user by ID and returns a JSON object with a success message.
+- **GET /api/users/id** Returns a single user by ID as JSON.
+- **DELETE /api/users/id** Deletes a single user by ID and returns a JSON object with a success message.
 - **POST /api/users:** Adds a user to the users array and returns the new user as JSON.
 
 ### Products
 
 - **GET /api/products:** Returns all products as a JSON array.
-- **GET /api/products/:id:** Returns a single product by ID as JSON.
-- **DELETE /api/products/:id:** Deletes a single product by ID and returns a JSON object with a success message.
+- **GET /api/products/id** Returns a single product by ID as JSON.
+- **DELETE /api/products/id** Deletes a single product by ID and returns a JSON object with a success message.
 - **POST /api/products:** Adds a product to the products array and returns the new product as JSON.
 
 ### Authentication
