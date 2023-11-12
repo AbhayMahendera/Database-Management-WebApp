@@ -7,7 +7,7 @@ const ejs = require('ejs');
 const apiRouter = require('./routes/apiRouter');
 // Create an Express application
 const app = express();
-const port = 8000;
+const port = 3000;
 
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
