@@ -41,7 +41,7 @@ Before running the application, ensure you have the following prerequisites inst
    npm start
    ```
 
-   The application will be running at [http://localhost:8000](http://localhost:8000).
+   The application will be running at [http://localhost:3000](http://localhost:3000).
 
 ## Code Refactoring
 
@@ -75,7 +75,7 @@ Before running the application, ensure you have the following prerequisites inst
 - **UsersService:** Provides CRUD operations for users.
 - **ProductsService:** Provides CRUD operations for products.
 
-## Patch Notes
+## Patch Notes | assgn3
 
 1. Updated visuals for improved user experience.
 2. Added an option to view the list on the login page.
