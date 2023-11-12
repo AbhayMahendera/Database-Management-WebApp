@@ -4,7 +4,7 @@ const express = require("express");
 const fs = require("fs");
 const cookieParser = require('cookie-parser');
 const ejs = require('ejs');
-
+const apiRouter = require('./routes/apiRouter');
 // Create an Express application
 const app = express();
 const port = 8000;
