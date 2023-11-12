@@ -17,9 +17,10 @@ This repository serves as a platform to showcase my work and progress throughout
 ## Assignments
 
 You will find a collection of assignments completed as part of the WEB322 course. Each assignment is organized into its own directory and includes relevant files and documentation.
-- [**Assignment 1**](https://github.com/AbhayMahendera/WEB322-Abhay-Mahendera/tree/main/assgn1)
-- [**Assignment 2**](https://github.com/AbhayMahendera/WEB322-Abhay-Mahendera/tree/main/assgn2)
-- [**Assignment 3**](https://github.com/AbhayMahendera/WEB322-Abhay-Mahendera/tree/main/assgn3)
+- [**Assignment 1**](https://github.com/AbhayMahendera/WEB322-Abhay-Mahendera/tree/main/assgn1) - Traffic Light
+- [**Assignment 2**](https://github.com/AbhayMahendera/WEB322-Abhay-Mahendera/tree/main/assgn2) - Node.js and Express Web Application with Authentication and Pagination
+- [**Assignment 3**](https://github.com/AbhayMahendera/WEB322-Abhay-Mahendera/tree/main/assgn3) - Cleanup, Refactoring & Adding REST Endpoints to your Application
+
 ## Student Information
 
 - **Student Number:** 174811216
