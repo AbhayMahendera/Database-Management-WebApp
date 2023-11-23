@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
+    <title>User List</title>
+</head>
+
+<body class="bg-space-background text-white">
+    <div class="container mx-auto py-8">
+        <div class="flex items-center justify-between mb-4">
+            <h1 class="text-3xl font-semibold">User List</h1>
+            <a href="/" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Home
+            </a>
+        </div>
+
+        <!-- Display a list of users -->
+        <ul class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <% users.forEach(function(user) { %>
+                <li class="p-4 border border-gray-700 rounded-lg shadow-md bg-gray-800 bg-opacity-70">
+                    <span class="text-blue-400 block"><%= user.id %> : <%= user.firstName %> <%= user.lastName %></span>
+                </li>
+            <% }); %>
+        </ul>
+
+        <!-- Pagination -->
+        <div class="mt-8 flex justify-center">
+            <% if (currentPage > 1) { %>
+                <a href="/viewList?page=<%= currentPage - 1 %>" class="text-blue-400 hover:underline mr-4">Previous</a>
+            <% } %>
+            <% if (users.length === 25) { %>
+                <a href="/viewList?page=<%= currentPage + 1 %>" class="text-blue-400 hover:underline">Next</a>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>
