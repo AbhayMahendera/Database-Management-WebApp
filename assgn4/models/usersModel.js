@@ -1,5 +1,5 @@
 const fs = require('fs');
-const userData = JSON.parse(fs.readFileSync('fakeUsers.json'));
+const userData = JSON.parse(fs.readFileSync('data/fakeUsers.json'));
 
 exports.getAllUsers = () => {
    return userData;

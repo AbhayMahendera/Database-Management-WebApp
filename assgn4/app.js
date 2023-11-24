@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Load user data from fakeUsers.json
-const userData = JSON.parse(fs.readFileSync("fakeUsers.json"));
+const userData = JSON.parse(fs.readFileSync("data/fakeUsers.json"));
 
 // Define a route for the homepage
 app.get("/", (req, res) => {

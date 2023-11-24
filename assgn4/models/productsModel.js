@@ -1,5 +1,5 @@
 const fs = require('fs');
-const productData = JSON.parse(fs.readFileSync('fakeProducts.json'));
+const productData = JSON.parse(fs.readFileSync('data/fakeProducts.json'));
 
 exports.getAllProducts = () => {
    return productData;
