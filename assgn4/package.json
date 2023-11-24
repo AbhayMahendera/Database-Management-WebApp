@@ -1,0 +1,19 @@
+{
+  "name": "assgn4",
+  "version": "1.0.0",
+  "description": "assgn4",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbhayMahendera/WEB322-Abhay-Mahendera.git"
+  },
+  "author": "Abhay Mahendera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AbhayMahendera/WEB322-Abhay-Mahendera/issues"
+  },
+  "homepage": "https://github.com/AbhayMahendera/WEB322-Abhay-Mahendera#readme"
+}
