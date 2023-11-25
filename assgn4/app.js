@@ -7,7 +7,7 @@ const apiRouter = require('./routes/apiRouter');
 // Create an Express application
 const app = express();
 const port = 3000;
-
+app.use("/api",apiRouter)
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
 
@@ -101,6 +101,7 @@ app.get("/admin.html", (req, res) => {
   // Render the admin page using EJS template or serve the HTML file directly
   res.render("admin");
 });
+
 
 // Start the Express server
 app.listen(port, () => {
