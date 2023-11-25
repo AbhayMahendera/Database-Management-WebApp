@@ -4,7 +4,7 @@
     "firstName": "Hakendn",
     "lastName": "kekw",
     "email": "kekwjsr@gmail.com",
-    "password": "11111",
+    "password": "111111",
     "dob": "2003-11-21T01:15:17.101Z",
     "company": "Vjejdn Company",
     "phone": "967-963-0570 x9136"
@@ -9978,25 +9978,5 @@
     "dob": "2023-09-05T13:57:25.966Z",
     "company": "Veum Inc",
     "phone": "1-343-330-3944 x2402"
-  },
-  {
-    "id": 998,
-    "firstName": "Juwan",
-    "lastName": "Jacobs",
-    "email": "Meredith20@gmail.com",
-    "password": "S2S2SpllKHF5mN4",
-    "dob": "2023-07-05T05:02:30.194Z",
-    "company": "Wehner - Moen",
-    "phone": "939-641-0964 x431"
-  },
-  {
-    "id": 999,
-    "firstName": "ADMIN",
-    "lastName": "ADMIN",
-    "email": "1",
-    "password": "1",
-    "dob": "2023-03-19T13:52:58.986Z",
-    "company": "Kihn - Stehr",
-    "phone": "(237) 627-9198 x169"
   }
 ]

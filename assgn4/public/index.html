@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Web322 Project</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.15/tailwind.min.css">
+  
 </head>
 <body>
   <section class="flex flex-col md:flex-row h-screen items-center">
@@ -26,13 +27,13 @@
   
         <form class="mt-6" action="#" method="POST">
           <div>
-            <label class="block text-gray-700">Email Address</label>
-            <input type="email" name="" id="" placeholder="Enter Email Address" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
+            <label class="block text-gray-700">Username</label>
+            <input type="text" name="username" id="username" placeholder="Enter Username" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
           </div>
   
           <div class="mt-4">
             <label class="block text-gray-700">Password</label>
-            <input type="password" name="" id="" placeholder="Enter Password" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+            <input type="password" name="password" id="password" placeholder="Enter Password" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                   focus:bg-white focus:outline-none" required>
           </div>
   
@@ -43,7 +44,8 @@
           <button type="submit" class="w-full block bg-blue-500 hover:bg-blue-400 focus:bg-blue-400 text-white font-semibold rounded-lg
                 px-4 py-3 mt-6">Log In</button>
         </form>
-  
+        
+        
   
   
         <p class="mt-8">

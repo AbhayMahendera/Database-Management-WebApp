@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/AbhayMahendera/WEB322-Abhay-Mahendera/issues"
   },
-  "homepage": "https://github.com/AbhayMahendera/WEB322-Abhay-Mahendera#readme"
+  "homepage": "https://github.com/AbhayMahendera/WEB322-Abhay-Mahendera#readme",
+  "dependencies": {
+    "mongodb": "^6.3.0",
+    "mongoose": "^8.0.1"
+  }
 }
