@@ -102,7 +102,26 @@ app.get("/admin.html", (req, res) => {
   res.render("admin");
 });
 
+const Sequelize = require('sequelize');
 
+// set up sequelize to point to our postgres database
+const sequelize = new Sequelize('SenecaDB', 'AbhayMahendera', 'c2pkTPhE7iNQ', {
+  host: 'ep-ancient-truth-58879858-pooler.us-east-2.aws.neon.tech',
+  dialect: 'postgres',
+  port: 5432,
+  dialectOptions: {
+    ssl: { rejectUnauthorized: false },
+  },
+});
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch((err) => {
+    console.log('Unable to connect to the database:', err);
+  });
 // Start the Express server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
