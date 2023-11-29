@@ -1,0 +1,22 @@
+[
+    {
+      "id": 0,
+      "firstName": "Admin",
+      "lastName": "Admin",
+      "email": "admin@seneca.com",
+      "password": "admin@seneca",
+      "dob": "2003-11-21T01:15:17.101Z",
+      "company": "Seneca College",
+      "phone": "967-963-0570 x9136"
+    },
+    {
+      "id": 998,
+      "firstName": "Juwan",
+      "lastName": "Jacobs",
+      "email": "Meredith20@gmail.com",
+      "password": "S2S2SpllKHF5mN4",
+      "dob": "2023-07-05T05:02:30.194Z",
+      "company": "Wehner - Moen",
+      "phone": "939-641-0964 x431"
+    
+      }]

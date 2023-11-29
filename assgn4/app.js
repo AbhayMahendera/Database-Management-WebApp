@@ -1,26 +1,37 @@
+                                    // -------------- Import required modules --------------  //
 
-// Import required modules
 const express = require("express");
 const fs = require("fs");
-const cookieParser = require('cookie-parser');
 const ejs = require('ejs');
 const apiRouter = require('./routes/apiRouter');
-// Create an Express application
+const bodyParser = require("body-parser");
+
+
+
+                                                  // Create an Express application
 const app = express();
 const port = 3000;
+app.use("/api",apiRouter)
 
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+ 
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
 
 // Serve static files from the "public" directory
 app.use(express.static("public"));
 
+
+
 // Enable parsing of URL-encoded form data
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
-
 // Load user data from fakeUsers.json
 const userData = JSON.parse(fs.readFileSync("data/fakeUsers.json"));
+
+
 
 // Define a route for the homepage
 app.get("/", (req, res) => {
@@ -34,33 +45,36 @@ app.get("/", (req, res) => {
   }
 });
 
+
+
 // Define a route for handling the login form submission (POST request)
 app.post("/", (req, res) => {
   // Extract username and password from the form data
   const { username, password, remember } = req.body;
-
   // Simulate user authentication using data from fakeUsers.json
   const authenticatedUser = userData.find(
     (user) => user.email === username && user.password === password
   );
+ 
 
-  if (authenticatedUser) {
-    // Remember login information if "remember" checkbox is checked
-    if (remember) {
-      res.cookie('username', username, { maxAge: 900000 }); // 15 minutes (maxAge is in milliseconds)
-      res.cookie('password', password, { maxAge: 900000 });
-    }
 
-    // Redirect to the list page after successful login
+  // Check if the user is an admin by searching in admin.json
+  const adminData = JSON.parse(fs.readFileSync("data/admin.json"));
+  const isAdmin = adminData.find(
+    (admin) => admin.email === username && admin.password === password
+  );
+
+  if (isAdmin) {
+    // If user is found in admin.json, redirect to admin.html
+    res.redirect("/admin.html");
+  } else if (authenticatedUser) {
+    // If user is found in fakeUsers.json, redirect to LoggedInList
     res.redirect("/LoggedInList");
   } else {
-    // Show a prompt for invalid credentials using JavaScript alert
-    res.send(
-      "<script>alert('Invalid username or password. Please try again.'); window.location='/';</script>"
-    );
+    // If user is not found in either file, handle authentication failure
+    res.status(401).send("Authentication failed");
   }
 });
-
 
 
 
@@ -101,23 +115,28 @@ app.get("/user/:userId", (req, res) => {
   // Render the user detail page using EJS template
   res.render("userDetail", { user });
 });
-app.get("/viewList", (req, res) => {
-  // Get the requested page number from query parameter (default to page 1)
-  console.log("Received request for viewList");
-  const page = parseInt(req.query.page) || 1;
 
-  // Number of items displayed per page
-  const perPage = 25;
+app.get("/admin.html", (req, res) => {
+  // Render the admin page using EJS template or serve the HTML file directly
+  res.render("admin");
+});
 
-  // Calculate the start and end indices for pagination
-  const startIndex = (page - 1) * perPage;
-  const endIndex = page * perPage;
 
-  // Get the subset of users for the current page from the loaded JSON data
-  const usersPerPage = userData.slice(startIndex, endIndex);
+// ------------------------ admin ---------------------
 
-  // Render the paginated list view using EJS template
-  res.render("viewList", { users: usersPerPage, currentPage: page });
+// Import your sequelize.js file
+const { readId } = require('./sequelize');
+
+
+// Define a route for handling the searchUser form submission
+app.post('/searchUser', (req, res) => {
+  // Extract the user ID from the form data
+  const { id } = req.body;
+
+  // Call the readId function with the extracted user ID
+  readId(id);
+
+  res.redirect(`/user/${id}`);
 });
 
 

@@ -1,84 +1,40 @@
-# Assignment Three: Refactoring and REST Endpoints
+## **Temporary** 
 
-## Table of Contents
+# Web Application Patch Notes
 
-- [Introduction](#introduction)
-- [Prerequisites](#prerequisites)
-- [Getting Started](#getting-started)
-- [Code Refactoring](#code-refactoring)
-- [REST Endpoints](#rest-endpoints)
-- [Service Modules](#service-modules)
-- [Patch Notes](#patch-notes)
+## Version 4.1.0 
 
-## Introduction
+### General Updates:
+1. **Visual Overhaul:**
+   - The entire website has undergone a visual transformation with a new theme inspired by Sneakers, providing a fresh and modern look.
 
-This Node.js and Express web application is part of Assignment Three, focusing on code cleanup, refactoring, and the addition of REST endpoints. The application now features organized code structure, RESTful API endpoints for users and products, and service modules for authentication, products, and users.
+### User Management:
+2. **User List and Details:**
+   - Regular users now have the ability to log in and view a list of other users along with their details.
+   - Note: In Assignment 5, this feature will be updated to show products instead of other users.
 
-## Prerequisites
+3. **Admin Features:**
+   - Two admin accounts have been deployed with the following capabilities:
+     - View the website as a visitor.
+     - Perform CRUD operations on the products list.
+     - Perform CRUD operations on the users list.
+     - View and manage orders placed (currently labeled as transactions, to be updated in Assignment 5).
 
-Before running the application, ensure you have the following prerequisites installed:
+4. **Account Creation:**
+   - Added an option for users to create a new account easily.
 
-- [Node.js](https://nodejs.org/): Download and install Node.js, which includes npm (Node Package Manager).
+5. **Forgot Password Functionality:**
+   - Implemented a "Forgot Password" option for users to reset their passwords.
 
-## Getting Started
+6. **Enhanced Email Functionality:**
+   - The email link is now a clickable link that redirects users to their default email application on the device.
 
-1. **Clone the Repository:**
+7. **Improved Admin Contact Form:**
+   - When contacting the admin through the forgot password form, the data filled in the form is now automatically populated in the email for a more seamless communication process.
 
-   ```bash
-   git clone https://github.com/AbhayMahendera/WEB322-Abhay-Mahendera
-   cd assgn3
-   ```
+### Bug Fixes:
+- Resolved an issue that took 3 days to solve, which was related to a silly mistake. This prevented the implementation of the product viewing feature for regular users in Assignment 4. The fix will be reflected in Assignment 5.
 
-2. **Install Dependencies:**
-
-   ```bash
-   npm install
-   ```
-
-3. **Start the Application:**
-
-   ```bash
-   npm start
-   ```
-
-   The application will be running at [http://localhost:3000](http://localhost:3000).
-
-## Code Refactoring
-
-- The code has been organized into separate modules for routes, models, and services.
-- CRUD operations for users and products are now handled in dedicated model modules.
-- Routers and controllers have been organized accordingly.
-
-## REST Endpoints
-
-### Users
-
-- **GET /api/users:** Returns all users as a JSON array.
-- **GET /api/users/id** Returns a single user by ID as JSON.
-- **DELETE /api/users/id** Deletes a single user by ID and returns a JSON object with a success message.
-- **POST /api/users:** Adds a user to the users array and returns the new user as JSON.
-
-### Products
-
-- **GET /api/products:** Returns all products as a JSON array.
-- **GET /api/products/id** Returns a single product by ID as JSON.
-- **DELETE /api/products/id** Deletes a single product by ID and returns a JSON object with a success message.
-- **POST /api/products:** Adds a product to the products array and returns the new product as JSON.
-
-### Authentication
-
-- **POST /api/login:** Accepts email and password in the body. If the email exists in the array of users and the user isAdmin, sends back {isAuthenticated: true}. If the user does not exist, sends back status 401 with {isAuthenticated: false}.
-
-## Service Modules
-
-- **AuthService:** Handles user authentication based on the provided email and password.
-- **UsersService:** Provides CRUD operations for users.
-- **ProductsService:** Provides CRUD operations for products.
-
-## Patch Notes | assgn3
-
-1. Updated visuals for improved user experience.
-2. Added an option to view the list on the login page.
-3. Detailed view of users can only be seen after login.
-4. Added a logout button (after login on the list view page) and a home button (on the list view page if opened without login).
-5. Added a "remember me" option that works using cookies.
+### Coming Soon (Assignment 5):
+- Updates to the user interface and functionality to showcase products instead of other users for regular users.
+- Further enhancements to the order management system.
