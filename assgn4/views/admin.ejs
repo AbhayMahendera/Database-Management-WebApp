@@ -35,8 +35,12 @@
         <!-- Content -->
         <main class="flex-1 p-10">
             <div class="bg-white p-8 rounded-lg shadow-md">
-                <h2 class="text-2xl font-bold mb-6">Welcome to the Admin Panel</h2>
-                
+                <h2 class="text-2xl font-bold mb-6">Search for user : </h2>
+                <form action="/searchUser" method="post"> 
+                    <label for="id" class="block text-sm font-medium text-gray-700">User ID:</label>
+                    <input type="text" id="id" name="id" class="mt-1 p-2 border rounded-md" required>
+                    <button type="submit" class="mt-4 bg-blue-500 text-white p-2 rounded-md">Search</button>
+                </form>
                 <!-- Dashboard Section -->
                 <section class="mb-8">
                     <h3 class="text-xl font-semibold mb-4">WILL SETUP FOR ASSIGNMENT 5 LATER</h3>

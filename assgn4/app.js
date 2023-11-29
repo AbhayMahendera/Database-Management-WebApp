@@ -1,23 +1,37 @@
-// Import required modules
+                                    // -------------- Import required modules --------------  //
+
 const express = require("express");
 const fs = require("fs");
-
 const ejs = require('ejs');
 const apiRouter = require('./routes/apiRouter');
-// Create an Express application
+const bodyParser = require("body-parser");
+
+
+
+                                                  // Create an Express application
 const app = express();
 const port = 3000;
 app.use("/api",apiRouter)
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+ 
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
 
 // Serve static files from the "public" directory
 app.use(express.static("public"));
 
+
+
 // Enable parsing of URL-encoded form data
 app.use(express.urlencoded({ extended: true }));
 // Load user data from fakeUsers.json
 const userData = JSON.parse(fs.readFileSync("data/fakeUsers.json"));
+
+
 
 // Define a route for the homepage
 app.get("/", (req, res) => {
@@ -31,15 +45,18 @@ app.get("/", (req, res) => {
   }
 });
 
+
+
 // Define a route for handling the login form submission (POST request)
 app.post("/", (req, res) => {
   // Extract username and password from the form data
   const { username, password, remember } = req.body;
-
   // Simulate user authentication using data from fakeUsers.json
   const authenticatedUser = userData.find(
     (user) => user.email === username && user.password === password
   );
+ 
+
 
   // Check if the user is an admin by searching in admin.json
   const adminData = JSON.parse(fs.readFileSync("data/admin.json"));
@@ -58,6 +75,8 @@ app.post("/", (req, res) => {
     res.status(401).send("Authentication failed");
   }
 });
+
+
 
 // Define a route for displaying a paginated list of users
 app.get("/LoggedInList", (req, res) => {
@@ -102,26 +121,25 @@ app.get("/admin.html", (req, res) => {
   res.render("admin");
 });
 
-const Sequelize = require('sequelize');
 
-// set up sequelize to point to our postgres database
-const sequelize = new Sequelize('SenecaDB', 'AbhayMahendera', 'c2pkTPhE7iNQ', {
-  host: 'ep-ancient-truth-58879858-pooler.us-east-2.aws.neon.tech',
-  dialect: 'postgres',
-  port: 5432,
-  dialectOptions: {
-    ssl: { rejectUnauthorized: false },
-  },
+// ------------------------ admin ---------------------
+
+// Import your sequelize.js file
+const { readId } = require('./sequelize');
+
+
+// Define a route for handling the searchUser form submission
+app.post('/searchUser', (req, res) => {
+  // Extract the user ID from the form data
+  const { id } = req.body;
+
+  // Call the readId function with the extracted user ID
+  readId(id);
+
+  res.redirect(`/user/${id}`);
 });
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch((err) => {
-    console.log('Unable to connect to the database:', err);
-  });
+
 // Start the Express server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
