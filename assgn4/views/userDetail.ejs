@@ -128,28 +128,29 @@
         </div>
 
         <!-- Display details of an individual user -->
-        <div class="user-details glass-bg">
-            <h1 class="text-3xl font-semibold mb-4">User Detail</h1>
-            <div class="p-4 border border-gray-300 rounded-lg shadow-md sneakers-box user-list">
-                <p class="attribute">ID</p>
-                <p class="value"><%= user.id %></p>
+<div class="user-details glass-bg">
+    <h1 class="text-3xl font-semibold mb-4">User Detail</h1>
+    <div class="p-4 border border-gray-300 rounded-lg shadow-md sneakers-box user-list">
+        <p class="attribute">ID</p>
+        <p class="value"><%= user.id %></p>
 
-                <p class="attribute">Name</p>
-                <p class="value"><%= user.firstName %> <%= user.lastName %></p>
+        <p class="attribute">Name</p>
+        <p class="value"><%= user.firstname %> <%= user.lastname %></p>
 
-                <p class="attribute">Email</p>
-                <p class="value"><a href="<%= user.email %>" target="_blank"><%= user.email %></a></p>
+        <p class="attribute">Email</p>
+        <p class="value"><a href="<%= user.email %>" target="_blank"><%= user.email %></a></p>
 
-                <p class="attribute">Date of Birth</p>
-                <p class="value"><%= user.dob %></p>
+        <p class="attribute">Date of Birth</p>
+        <p class="value"><%= user.dob %></p>
 
-                <p class="attribute">Company</p>
-                <p class="value"><%= user.company %></p>
+        <p class="attribute">Company</p>
+        <p class="value"><%= user.company %></p>
 
-                <p class="attribute">Phone</p>
-                <p class="value"><%= user.phone %></p>
-            </div>
-        </div>
+        <p class="attribute">Phone</p>
+        <p class="value"><%= user.phone %></p>
+    </div>
+</div>
+
     </div>
 </body>
 

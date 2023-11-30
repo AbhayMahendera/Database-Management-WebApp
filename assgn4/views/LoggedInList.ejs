@@ -40,12 +40,11 @@
                 <% users.forEach(function(user) { %>
                     <li class="p-4 border border-gray-700 rounded-lg shadow-md glass-bg user-box">
                         <a href="/user/<%= user.id %>" class="text-white hover:underline block">
-                            <%= user.id %>: <%= user.firstName %> <%= user.lastName %>
+                            <%= user.id %>: <%= user.firstname %> <%= user.lastname %>
                         </a>
                     </li>
                 <% }); %>
             </ul>
-
             <!-- Pagination -->
             <div class="mt-8 flex justify-center">
                 <% if (currentPage > 1) { %>
