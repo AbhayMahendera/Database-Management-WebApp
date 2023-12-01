@@ -20,6 +20,7 @@ You will find a collection of assignments completed as part of the WEB322 course
 - [**Assignment 1**](https://github.com/AbhayMahendera/WEB322-Abhay-Mahendera/tree/main/assgn1) - Traffic Light
 - [**Assignment 2**](https://github.com/AbhayMahendera/WEB322-Abhay-Mahendera/tree/main/assgn2) - Node.js and Express Web Application with Authentication and Pagination
 - [**Assignment 3**](https://github.com/AbhayMahendera/WEB322-Abhay-Mahendera/tree/main/assgn3) - Cleanup, Refactoring & Adding REST Endpoints to your Application
+- [**Assignment 4**](https://github.com/AbhayMahendera/WEB322-Abhay-Mahendera/tree/main/assgn4) - Replace Fake data files with calls to either a relational databse or MongoDB
 
 ## Student Information
 
