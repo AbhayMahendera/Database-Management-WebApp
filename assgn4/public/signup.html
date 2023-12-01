@@ -12,8 +12,40 @@
             background-position: center;
             background-repeat: no-repeat;
         }
+        .marquee-text {
+            white-space: nowrap;
+            overflow: hidden;
+            box-sizing: border-box;
+            animation: flashAnimation 2s infinite alternate;
+        }
+
+        @keyframes flashAnimation {
+            0% {
+                color: red;
+            }
+
+            25% {
+                color: rgb(255, 0, 221);
+            }
+            50% {
+                color: rgb(36, 255, 69);
+            }
+
+            75% {
+                color: rgb(238, 255, 7);
+            }
+            100% {
+                color: rgb(255, 255, 255);
+            }}
+     
+       
     </style>
 </head>
+<div class="marquee-text  bg-black p-2">
+    <marquee behavior="scroll" direction="left">
+        This page is made temporarily for Assignment 4. More changes will be made in Assignment 5. I have finals upcoming and some other subject projects too, so had a tight deadline. Improvements will keep coming. Thanks.
+    </marquee>
+</div>
 <body class="bg-gray-100 h-screen flex items-center justify-center">
 
     <div class="bg-white p-8 rounded shadow-md max-w-md w-full">

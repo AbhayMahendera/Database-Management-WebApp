@@ -5,129 +5,31 @@ const fs = require("fs");
 const ejs = require('ejs');
 const apiRouter = require('./routes/apiRouter');
 const bodyParser = require("body-parser");
-
+const {sequelize,users} = require('./sequelize');
 
 
                                                   // Create an Express application
 const app = express();
 const port = 3000;
 app.use("/api",apiRouter)
-
-
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
- 
-// Set EJS as the view engine
+app.use(express.static('public'));
 app.set('view engine', 'ejs');
-
-// Serve static files from the "public" directory
 app.use(express.static("public"));
 
 
-
-// Enable parsing of URL-encoded form data
-app.use(express.urlencoded({ extended: true }));
-// Load user data from fakeUsers.json
-const userData = JSON.parse(fs.readFileSync("data/fakeUsers.json"));
+                                         // ------------------------ admin --------------------- //
 
 
-
-// Define a route for the homepage
-app.get("/", (req, res) => {
-  // Check if user login details are stored in cookies
-  if (req.cookies.username && req.cookies.password) {
-    // If user details are stored, redirect to list
-    res.redirect("/LoggedInList");
-  } else {
-    // Serve the HTML file for the login page
-    res.sendFile(__dirname + "/public/index.html");
-  }
-});
-
-
-
-// Define a route for handling the login form submission (POST request)
-app.post("/", (req, res) => {
-  // Extract username and password from the form data
-  const { username, password, remember } = req.body;
-  // Simulate user authentication using data from fakeUsers.json
-  const authenticatedUser = userData.find(
-    (user) => user.email === username && user.password === password
-  );
- 
-
-
-  // Check if the user is an admin by searching in admin.json
-  const adminData = JSON.parse(fs.readFileSync("data/admin.json"));
-  const isAdmin = adminData.find(
-    (admin) => admin.email === username && admin.password === password
-  );
-
-  if (isAdmin) {
-    // If user is found in admin.json, redirect to admin.html
-    res.redirect("/admin.html");
-  } else if (authenticatedUser) {
-    // If user is found in fakeUsers.json, redirect to LoggedInList
-    res.redirect("/LoggedInList");
-  } else {
-    // If user is not found in either file, handle authentication failure
-    res.status(401).send("Authentication failed");
-  }
-});
-
-
-
-// Define a route for displaying a paginated list of users
-app.get("/LoggedInList", (req, res) => {
-  // Get the requested page number from query parameter (default to page 1)
-  console.log("Received request for LoggedInList");
-  const page = parseInt(req.query.page) || 1;
-
-  // Number of items displayed per page
-  const perPage = 25;
-
-  // Calculate the start and end indices for pagination
-  const startIndex = (page - 1) * perPage;
-  const endIndex = page * perPage;
-
-  // Get the subset of users for the current page from the loaded JSON data
-  const usersPerPage = userData.slice(startIndex, endIndex);
-
-  // Render the paginated list view using EJS template
-  res.render("LoggedInList", { users: usersPerPage, currentPage: page });
-});
-
-// Define a route for displaying user details
-app.get("/user/:userId", (req, res) => {
-  // Extract the user ID from the route parameters
-  const userId = parseInt(req.params.userId);
-
-  // Find the user with the specified ID in the loaded JSON data
-  const user = userData.find((u) => u.id === userId);
-
-  if (!user) {
-    // Handle the case where the user is not found with a 404 status
-    res.status(404).send("User not found");
-    return;
-  }
-
-  // Render the user detail page using EJS template
-  res.render("userDetail", { user });
-});
-
-app.get("/admin.html", (req, res) => {
+app.get("/admin", (req, res) => {
   // Render the admin page using EJS template or serve the HTML file directly
   res.render("admin");
 });
 
 
-// ------------------------ admin ---------------------
-
-// Import your sequelize.js file
-const { readId } = require('./sequelize');
 
 
+const {readId} = require('./sequelize');
 // Define a route for handling the searchUser form submission
 app.post('/searchUser', (req, res) => {
   // Extract the user ID from the form data
@@ -140,7 +42,132 @@ app.post('/searchUser', (req, res) => {
 });
 
 
-// Start the Express server
+                                         // ------------------------ login --------------------- //
+
+app.post('/login', async (req, res) => {
+  const { loginVerify } = require('./sequelize');
+
+  const { email, password } = req.body;
+
+  // Use await to wait for the result of loginVerify
+  const isAuthenticated = await loginVerify(email, password , 'user');
+  const isAdminAuthenticated = await loginVerify(email, password, 'admins');
+
+  if (isAuthenticated) {
+    // Redirect to the user list page if user credentials are valid
+    res.redirect('/LoggedInList');
+  } else if (isAdminAuthenticated) {
+    // Redirect to the admin page if admin credentials are valid
+    res.redirect('/admin');
+  } else {
+    // Handle authentication failure, for example, redirect to login page with an error message
+    res.redirect('/?error=Authentication failed');
+  }
+});
+
+                                         // ------------------------ user list --------------------- //
+
+app.get("/LoggedInList", async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const perPage = 25;
+
+    const startIndex = (page - 1) * perPage;
+    const endIndex = page * perPage;
+
+    const usersPerPage = await users.findAll({
+      offset: startIndex,
+      limit: perPage,
+      order: [['id', 'ASC']],
+    });
+
+    res.render("LoggedInList", { users: usersPerPage, currentPage: page });
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+                                         // ------------------------ user details --------------------- //
+
+app.get("/user/:id", async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+
+    const user = await users.findByPk(id);
+
+    if (!user) {
+      res.status(404).send("User not found");
+      return;
+    }
+
+    res.render("userDetail", { user });
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+                                          // ------------------------ Admin -> create --------------------- //
+const { createUser } = require('./sequelize');  
+app.post('/admin/createUser', async (req, res) => {
+  try {
+    const { id , firstname, lastname, email, password, dob, phone , company} = req.body;
+   
+if (!firstname || !lastname) {
+  res.locals.message = 'Firstname and lastname are required';
+  res.locals.success = false;
+  res.redirect('/admin'); // Redirect to the admin page with an error message
+  return;
+}
+    // Call the createUser function from sequelize.js
+    await createUser(id , firstname, lastname, email, password, dob, phone, company);
+
+    res.redirect('/admin'); // Redirect to the admin page or wherever you want after creation
+  } catch (error) {
+    console.error('Error creating user:', error);
+    res.status(500).send('Error creating user');
+  }
+});
+
+
+// ------------------------ Admin -> update --------------------- //
+
+const { updateUser, deleteUser } = require('./sequelize');
+
+app.post('/admin/updateUser', async (req, res) => {
+  try {
+    const { id, firstname, lastname, email, password, dob, phone, company } = req.body;
+
+    // Call the updateUser function from sequelize.js
+    await updateUser(id, firstname, lastname, email, password, dob, phone, company);
+
+    res.redirect('/admin'); // Redirect to the admin page or wherever you want after updating
+  } catch (error) {
+    console.error('Error updating user:', error);
+    res.status(500).send('Error updating user');
+  }
+});
+
+// ------------------------ Admin -> delete --------------------- //
+
+app.post('/admin/deleteUser', async (req, res) => {
+  try {
+    const { id } = req.body;
+
+    // Call the deleteUser function from sequelize.js
+    await deleteUser(id);
+
+    res.redirect('/admin'); // Redirect to the admin page or wherever you want after deleting
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    res.status(500).send('Error deleting user');
+  }
+});
+
+                                          // ------------------------ server --------------------- //
+
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
