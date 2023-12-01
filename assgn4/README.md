@@ -42,13 +42,13 @@ Before running the application, ensure you have the following prerequisites inst
 
    To run your application locally, you'll need the following dependencies:
 
-1. **Node.js and npm**: Ensure that you have Node.js and npm (Node Package Manager) installed on your machine. You can download them from the official website: [Node.js](https://nodejs.org/)
+- **Node.js and npm**: Ensure that you have Node.js and npm (Node Package Manager) installed on your machine. You can download them from the official website: [Node.js](https://nodejs.org/)
 
-2. **PostgreSQL Database**: Since you're using PostgreSQL, you need to have a PostgreSQL database server running. You can download it from the official PostgreSQL website: [PostgreSQL](https://www.postgresql.org/download/)
+- **PostgreSQL Database**: Since you're using PostgreSQL, you need to have a PostgreSQL database server running. You can download it from the official PostgreSQL website: [PostgreSQL](https://www.postgresql.org/download/)
 
-3. **pgAdmin**: pgAdmin is a popular administration and management tool for PostgreSQL. You can download it from the official pgAdmin website: [pgAdmin](https://www.pgadmin.org/download/)
+- **pgAdmin**: pgAdmin is a popular administration and management tool for PostgreSQL. You can download it from the official pgAdmin website: [pgAdmin](https://www.pgadmin.org/download/)
 
-4. **Text Editor or IDE**: You can use any text editor or integrated development environment (IDE) of your choice. Some popular ones include Visual Studio Code, Atom, Sublime Text, or WebStorm.
+- **Text Editor or IDE**: You can use any text editor or integrated development environment (IDE) of your choice. Some popular ones include Visual Studio Code, Atom, Sublime Text, or WebStorm.
 
 After installing Node.js and PostgreSQL, follow these steps:
 
