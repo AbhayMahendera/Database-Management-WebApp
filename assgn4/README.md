@@ -179,4 +179,4 @@ For accessing the admin interface, use the following credentials:
 **Note:**
 Some features may be non-functional due to the fact that they will be required in Assignment 5. Additionally, a tight deadline schedule and involvement in multiple projects might have caused delays in certain areas. Your understanding is appreciated.
 
-GitHub Repository: [WEB322-Abhay-Mahendera](https://github.com/AbhayMahendera/WEB322
+GitHub Repository: [WEB322-Abhay-Mahendera](https://github.com/AbhayMahendera/WEB322)
