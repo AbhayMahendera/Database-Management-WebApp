@@ -12,7 +12,7 @@
 - [Documentation](#documentation)
 - [Submission](#submission)
 - [Evaluation Criteria](#evaluation-criteria)
-- [Login Credentials](#LoginCredentials)
+- [Login Credentials](#Login-Credentials)
 - [Web Application Patch Notes](#web-application-patch-notes)
 
 ## Introduction
