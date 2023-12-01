@@ -55,6 +55,8 @@ const users = sequelize.define('users', {
     type: DataTypes.INTEGER,
     allowNull: false,
     primaryKey: true,
+    
+  
   },
   firstname: {
     type: DataTypes.STRING,
@@ -78,8 +80,13 @@ const users = sequelize.define('users', {
   },
   phone: {
     type: DataTypes.STRING,
+ 
+  },
+  company: {
+    type: DataTypes.STRING,
     allowNull: false,
-  },},
+  },
+},
   {
     timestamps: false,
   });
@@ -99,26 +106,26 @@ sequelize.sync()
 
 
 
+  async function createUser(id, firstname, lastname, email, password, dob, phone, company) {
+    try {
+        const newUser = await users.create({
+            id:id,
+            firstname: firstname,
+            lastname: lastname,
+            email: email,
+            password: password,
+            dob: dob,
+            phone: phone,
+            company: company,
+        });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        console.log('User created successfully');
+        return newUser;
+    } catch (error) {
+        console.error('Error creating user:', error);
+        throw error; // Rethrow the error to handle it in the calling function
+    }
+}
 
 
 //    ----------------------------- READ -----------------------------    //
@@ -190,23 +197,57 @@ async function loginVerify(email, password, userType) {
 //    ----------------------------- UPDATE -----------------------------    //
 
 
+async function updateUser(id, firstname, lastname, email, password, dob, phone, company) {
+  try {
+    const user = await users.findByPk(id);
 
+    if (!user) {
+      throw new Error(`User with ID ${id} not found`);
+    }
 
+    // Update user attributes
+    user.firstname = firstname;
+    user.lastname = lastname;
+    user.email = email;
+    user.password = password;
+    user.dob = dob;
+    user.phone = phone;
+    user.company = company;
 
+    await user.save();
 
-
-
-
-
-
-
-
+    console.log('User updated successfully');
+    return user;
+  } catch (error) {
+    console.error('Error updating user:', error);
+    throw error;
+  }
+}
 
 
 
 
 
 //    ----------------------------- DELETE -----------------------------    //
+async function deleteUser(id) {
+  try {
+    const user = await users.findByPk(id);
+
+    if (!user) {
+      throw new Error(`User with ID ${id} not found`);
+    }
+
+    await user.destroy();
+
+    console.log('User deleted successfully');
+    return true;
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    throw error;
+  }
+}
+
+//    ----------------------------- Exports -----------------------------    //
 
 
 module.exports = {
@@ -215,4 +256,7 @@ module.exports = {
   readId,
   loginVerify,
   admins,
+  createUser,
+  updateUser,
+  deleteUser,
 };

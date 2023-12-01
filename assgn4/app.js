@@ -108,6 +108,62 @@ app.get("/user/:id", async (req, res) => {
   }
 });
 
+                                          // ------------------------ Admin -> create --------------------- //
+const { createUser } = require('./sequelize');  
+app.post('/admin/createUser', async (req, res) => {
+  try {
+    const { id , firstname, lastname, email, password, dob, phone , company} = req.body;
+   
+if (!firstname || !lastname) {
+  res.locals.message = 'Firstname and lastname are required';
+  res.locals.success = false;
+  res.redirect('/admin'); // Redirect to the admin page with an error message
+  return;
+}
+    // Call the createUser function from sequelize.js
+    await createUser(id , firstname, lastname, email, password, dob, phone, company);
+
+    res.redirect('/admin'); // Redirect to the admin page or wherever you want after creation
+  } catch (error) {
+    console.error('Error creating user:', error);
+    res.status(500).send('Error creating user');
+  }
+});
+
+
+// ------------------------ Admin -> update --------------------- //
+
+const { updateUser, deleteUser } = require('./sequelize');
+
+app.post('/admin/updateUser', async (req, res) => {
+  try {
+    const { id, firstname, lastname, email, password, dob, phone, company } = req.body;
+
+    // Call the updateUser function from sequelize.js
+    await updateUser(id, firstname, lastname, email, password, dob, phone, company);
+
+    res.redirect('/admin'); // Redirect to the admin page or wherever you want after updating
+  } catch (error) {
+    console.error('Error updating user:', error);
+    res.status(500).send('Error updating user');
+  }
+});
+
+// ------------------------ Admin -> delete --------------------- //
+
+app.post('/admin/deleteUser', async (req, res) => {
+  try {
+    const { id } = req.body;
+
+    // Call the deleteUser function from sequelize.js
+    await deleteUser(id);
+
+    res.redirect('/admin'); // Redirect to the admin page or wherever you want after deleting
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    res.status(500).send('Error deleting user');
+  }
+});
 
                                           // ------------------------ server --------------------- //
 
