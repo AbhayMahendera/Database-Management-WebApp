@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <div id="notification-container"></div>
+
+    <style>
+        body {
+            background: url('media/admin2.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .glass-bg {
+            background: rgba(255, 255, 255, 0.053);
+            backdrop-filter: blur(40px);
+            
+        }
+        .marquee-text {
+            white-space: nowrap;
+            overflow: hidden;
+            box-sizing: border-box;
+            animation: flashAnimation 2s infinite alternate;
+        }
+
+        @keyframes flashAnimation {
+            0% {
+                color: red;
+            }
+
+            25% {
+                color: rgb(255, 0, 221);
+            }
+            50% {
+                color: rgb(36, 255, 69);
+            }
+
+            75% {
+                color: rgb(238, 255, 7);
+            }
+            100% {
+                color: rgb(255, 255, 255);
+            }}
+     
+       
+    </style>
+</head>
+<body class="font-sans text-gray-900 antialiased">
+    <div class="marquee-text  bg-black p-2">
+        <marquee behavior="scroll" direction="left">
+            This admin panel is made temporarily for Assignment 4. More changes will be made in Assignment 5. I have finals upcoming and some other subject projects too, so had a tight deadline. Improvements will keep coming. Thanks.
+        </marquee>
+    </div>
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-1/4 bg-blue-500 p-6 glass-bg">
+            <h1 class="text-2xl font-bold text-white mb-6">Admin Panel</h1>
+            <ul>
+                <li><a href="/LoggedInList" class="text-white">View as a Visitor</a></li>
+                <li><a href="admin/view-products" class="text-white">Products</a></li>
+                <li><a href="/users" class="text-white">Users</a></li>
+                <li><a href="admin\view-transactions.ejs" class="text-white">Transactions</a></li>
+            </ul>
+        </aside>
+
+        <!-- Content -->
+        <main class="flex-1 p-10">
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                
+                                             <!-- Create -->
+            
+                <!-- Create -->
+<section class="mb-8">
+    <h3 class="text-xl font-semibold mb-4">Add a new user:</h3>
+    <form action="/admin/createUser" method="post">
+
+        <label for="id" class="block text-sm font-medium text-gray-700">Assign an ID :</label>
+        <input type="text" id="id" name="id" class="mt-1 p-2 border rounded-md" required>
+
+        <label for="firstname" class="block text-sm font-medium text-gray-700">First Name:</label>
+        <input type="text" id="firstname" name="firstname" class="mt-1 p-2 border rounded-md" required>
+
+        <label for="lastname" class="block text-sm font-medium text-gray-700">Last Name:</label>
+        <input type="text" id="lastname" name="lastname" class="mt-1 p-2 border rounded-md" required>
+
+        <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
+        <input type="email" id="email" name="email" class="mt-1 p-2 border rounded-md" required>
+
+        <label for="password" class="block text-sm font-medium text-gray-700">Password:</label>
+        <input type="password" id="password" name="password" class="mt-1 p-2 border rounded-md" required>
+
+        <label for="dob" class="block text-sm font-medium text-gray-700">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" class="mt-1 p-2 border rounded-md" required>
+
+        <label for="phone" class="block text-sm font-medium text-gray-700">Phone:</label>
+        <input type="text" id="phone" name="phone" class="mt-1 p-2 border rounded-md" required>
+
+        <label for="company" class="block text-sm font-medium text-gray-700">Company:</label>
+        <input type="text" id="company" name="company" class="mt-1 p-2 border rounded-md" required>
+
+        <button type="submit" class="mt-4 bg-blue-500 text-white p-2 rounded-md">Create User</button>
+    </form>
+</section>
+
+                                             <!-- Read -->
+                <h2 class="text-2xl font-bold mb-6">Search for user : </h2>
+                <form action="/searchUser" method="post"> 
+                    <label for="id" class="block text-sm font-medium text-gray-700">User ID:</label>
+                    <input type="text" id="id" name="id" class="mt-1 p-2 border rounded-md" required>
+                    <button type="submit" class="mt-4 bg-blue-500 text-white p-2 rounded-md">Search</button>
+                </form>
+<!-- Update User Form -->
+<section class="mb-8">
+    <h3 class="text-xl font-semibold mb-4">Update a user:</h3>
+    <form action="/admin/updateUser" method="post">
+
+        <label for="updateUserId" class="block text-sm font-medium text-gray-700">User ID:</label>
+        <input type="text" id="updateUserId" name="id" class="mt-1 p-2 border rounded-md" required>
+
+        <label for="updateFirstname" class="block text-sm font-medium text-gray-700">First Name:</label>
+        <input type="text" id="updateFirstname" name="firstname" class="mt-1 p-2 border rounded-md" required>
+
+        <label for="updateLastname" class="block text-sm font-medium text-gray-700">Last Name:</label>
+        <input type="text" id="updateLastname" name="lastname" class="mt-1 p-2 border rounded-md" required>
+
+        <label for="updateEmail" class="block text-sm font-medium text-gray-700">Email:</label>
+        <input type="email" id="updateEmail" name="email" class="mt-1 p-2 border rounded-md" required>
+
+        <label for="updatePassword" class="block text-sm font-medium text-gray-700">Password:</label>
+        <input type="password" id="updatePassword" name="password" class="mt-1 p-2 border rounded-md" required>
+
+        <label for="updateDob" class="block text-sm font-medium text-gray-700">Date of Birth:</label>
+        <input type="date" id="updateDob" name="dob" class="mt-1 p-2 border rounded-md" required>
+
+        <label for="updatePhone" class="block text-sm font-medium text-gray-700">Phone:</label>
+        <input type="text" id="updatePhone" name="phone" class="mt-1 p-2 border rounded-md" required>
+
+        <label for="updateCompany" class="block text-sm font-medium text-gray-700">Company:</label>
+        <input type="text" id="updateCompany" name="company" class="mt-1 p-2 border rounded-md" required>
+
+        <button type="submit" class="mt-4 bg-blue-500 text-white p-2 rounded-md">Update User</button>
+    </form>
+</section>
+
+<!-- Delete User Form -->
+<section class="mb-8">
+    <h3 class="text-xl font-semibold mb-4">Delete a user:</h3>
+    <form action="/admin/deleteUser" method="post">
+        <label for="deleteUserId" class="block text-sm font-medium text-gray-700">User ID:</label>
+        <input type="text" id="deleteUserId" name="id" class="mt-1 p-2 border rounded-md" required>
+
+        <button type="submit" class="mt-4 bg-red-500 text-white p-2 rounded-md">Delete User</button>
+    </form>
+</section>
+              
+
+
+                <!-- Transactions Section -->
+                <section>
+                    <h3 class="text-xl font-semibold mb-4">WILL SETUP FOR ASSIGNMENT 5 LATER</h3>
+                    <p>WILL SETUP FOR ASSIGNMENT 5 LATER.</p>
+                </section>
+            </div>
+        </main>
+    </div>
+
+<% if (typeof message !== 'undefined' && success) { %>
+    <div class="success-message"><%= message %></div>
+  <% } else if (typeof message !== 'undefined' && !success) { %>
+    <div class="error-message"><%= message %></div>
+  <% } %>
+  
+</body>
+
+</html><!-- I NEED TO ADD LOGOUT BUTTON TOO -->

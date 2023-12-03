@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
+    <title>User List</title>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="container mx-auto py-8">
+        <!-- Navigation bar -->
+        <div class="flex justify-end pr-4">
+            <a href="/" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline">Logout</a>
+        </div>
+
+        <div class="py-8">
+            <h1 class="text-3xl font-semibold mb-4 text-center">User List</h1>
+
+            <!-- Display a list of users -->
+            <ul class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                <% users.forEach(function(user) { %>
+                    <li class="p-4 border border-gray-700 rounded-lg shadow-md bg-gray-800 bg-opacity-70">
+                        <a href="/user/<%= user.id %>" class="text-blue-400 hover:underline block"> <%= user.id %> : <%= user.firstName %> <%= user.lastName %></a>
+                    </li>
+                <% }); %>
+            </ul>
+
+            <!-- Pagination -->
+            <div class="mt-8 flex justify-center">
+                <% if (currentPage > 1) { %>
+                    <a href="/LoggedInList?page=<%= currentPage - 1 %>" class="text-blue-400 hover:underline mr-4">Previous</a>
+                <% } %>
+                <% if (users.length === 25) { %>
+                    <a href="/LoggedInList?page=<%= currentPage + 1 %>" class="text-blue-400 hover:underline">Next</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
