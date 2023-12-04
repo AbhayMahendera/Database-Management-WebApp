@@ -1,4 +1,4 @@
-const usersModel = require('../models/usersModel');
+const sequelize = require('../sequelize');
 
 exports.getAllUsers = () => {
    return usersModel.getAllUsers();
