@@ -1,61 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        body {
-            background: url('media/admin2.jpg') no-repeat center center fixed;
-            background-size: cover;
-        }
+    <!DOCTYPE html>
+    <html lang="en">
 
-        .glass-bg {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 8px;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+        <style>
+            body {
+                background: url('media/admin2.jpg') no-repeat center center fixed;
+                background-size: cover;
+            }
 
-        .user-box {
-            height: 30 px;
-            width: 70 px;
-        }
-       
-    </style>
-    <title>User List</title>
-</head>
-<body class="font-sans text-gray-900 antialiased">
+            .glass-bg {
+                background: rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(10px);
+                border-radius: 8px;
+            }
 
-    <div class="container mx-auto py-8">
-        <!-- Navigation bar -->
-        <div class="flex justify-end pr-4">
-            <a href="/" class="bg-blue-500 hover:bg-white-600 text-white font-semibold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline">Logout</a>
-        </div>
+    
+        </style>
+        <title>User List</title>
+    </head>
 
-        <div class="py-8">
-            <h1 class="text-3xl font-semibold mb-4 text-center text-white">User List</h1>
+    <body class="font-sans text-gray-900 antialiased">
 
-            <!-- Display a list of users -->
-            <ul class="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 px-10">
-                <% users.forEach(function(user) { %>
-                    <li class="p-4 border border-gray-700 rounded-lg shadow-md glass-bg user-box">
-                        <a href="/user/<%= user.id %>" class="text-white hover:underline block">
-                            <%= user.id %>: <%= user.firstname %> <%= user.lastname %>
-                        </a>
-                    </li>
-                <% }); %>
-            </ul>
-            <!-- Pagination -->
-            <div class="mt-8 flex justify-center">
-                <% if (currentPage > 1) { %>
-                    <a href="/LoggedInList?page=<%= currentPage - 1 %>" class="text-white-500 hover:underline mr-4">Previous</a>
-                <% } %>
-                <% if (users.length === 25) { %>
-                    <a href="/LoggedInList?page=<%= currentPage + 1 %>" class="text-white-500 hover:underline">Next</a>
-                <% } %>
+        <div class="container mx-auto py-8">
+            <!-- Navigation bar -->
+            <div class="flex justify-end pr-4">
+                <a href="/" class="bg-blue-500 hover:bg-white-600 text-white font-semibold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline">Logout</a>
+            </div>
+
+            <div class="py-8">
+                <h1 class="text-3xl font-semibold mb-4 text-center text-white">User List</h1>
+
+                <!-- Search Input -->
+                <div class="mb-4 flex justify-center">
+                    <input type="text" id="searchInput" placeholder="Search by Name/ID on the current page." class="p-2 w-96 border rounded-md" oninput="searchUsers()">
+                </div>
+
+                <!-- Display a list of users -->
+                <ul id="userList" class="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 px-10">
+                    <% users.forEach(function(user) { %>
+                        <li class="p-4 border border-gray-700 rounded-lg shadow-md glass-bg user-box">
+                            <a href="/user/<%= user.id %>" class="text-white hover:underline block">
+                                <%= user.id %>: <%= user.firstname %> <%= user.lastname %>
+                            </a>
+                        </li>
+                    <% }); %>
+                </ul>
+
+                <!-- Pagination -->
+                <div class="mt-8 flex justify-center">
+                    <% if (currentPage > 1) { %>
+                        <a href="/LoggedInList?page=<%= currentPage - 1 %>" class="text-white-500 hover:underline mr-4">Previous</a>
+                    <% } %>
+                    <% if (users.length === 25) { %>
+                        <a href="/LoggedInList?page=<%= currentPage + 1 %>" class="text-white-500 hover:underline">Next</a>
+                    <% } %>
+                    
+                </div>
             </div>
         </div>
-    </div>
 
-</body>
-</html>
+       <script>
+    function searchUsers() {
+        var input = document.getElementById('searchInput').value.toLowerCase();
+        var userList = document.getElementById('userList').getElementsByTagName('li');
+
+        for (var i = 0; i < userList.length; i++) {
+            var username = userList[i].innerText.toLowerCase();
+            if (username.includes(input)) {
+                userList[i].style.display = '';
+            } else {
+                userList[i].style.display = 'none';
+            }
+        }
+    }
+</script>
+
+    </body>
+
+    </html>

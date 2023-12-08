@@ -66,20 +66,16 @@ app.post('/login', async (req, res) => {
 });
 
                                          // ------------------------ user list --------------------- //
-
 app.get("/LoggedInList", async (req, res) => {
   try {
+    const allUsers = await users.findAll({ order: [['id', 'ASC']] });
     const page = parseInt(req.query.page) || 1;
     const perPage = 25;
 
     const startIndex = (page - 1) * perPage;
     const endIndex = page * perPage;
 
-    const usersPerPage = await users.findAll({
-      offset: startIndex,
-      limit: perPage,
-      order: [['id', 'ASC']],
-    });
+    const usersPerPage = allUsers.slice(startIndex, endIndex);
 
     res.render("LoggedInList", { users: usersPerPage, currentPage: page });
   } catch (error) {
@@ -87,6 +83,7 @@ app.get("/LoggedInList", async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+
 
                                          // ------------------------ user details --------------------- //
 

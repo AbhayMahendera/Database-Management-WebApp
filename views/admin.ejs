@@ -8,6 +8,21 @@
     <div id="notification-container"></div>
 
     <style>
+
+.logout-button {
+    background-color: #ff0000;
+    color: #ffffff; 
+    padding: 8px 16px; 
+    border-radius: 7px; 
+    text-decoration: none; 
+    position:relative;
+}
+
+.logout-button:hover {
+    background-color: #cc0000; /* Darker red on hover */
+}
+
+
         body {
             background: url('media/admin2.jpg') no-repeat center center fixed;
             background-size: cover;
@@ -164,8 +179,8 @@
 
                 <!-- Transactions Section -->
                 <section>
-                    <h3 class="text-xl font-semibold mb-4">WILL SETUP FOR ASSIGNMENT 5 LATER</h3>
-                    <p>WILL SETUP FOR ASSIGNMENT 5 LATER.</p>
+                    <h3 class="text-xl font-semibold mb-4">WILL SETUP  LATER</h3>
+                    <p>WILL SETUP LATER.</p>
                 </section>
             </div>
         </main>
@@ -177,6 +192,11 @@
     <div class="error-message"><%= message %></div>
   <% } %>
   
+
+  <div class="absolute top-0 right-0 mt-4 mr-4">
+    <a href="/index.html" class="logout-button">Logout</a>
+</div>
+
 </body>
 
 </html><!-- I NEED TO ADD LOGOUT BUTTON TOO -->
