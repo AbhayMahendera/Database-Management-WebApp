@@ -28,6 +28,38 @@ The application is now live and can be accessed at the following URL:
 
 Simply follow the provided link to experience the live application. Remember to use the admin credentials to access the full functionality of user management.
 
+### Professor's Tests
+
+1. **Link to App:**
+   - Go to the [Live App](https://jittery-newt-top-hat.cyclic.app/) by clicking the provided link.
+
+2. **Login to Admin Page:**
+   - Use the credentials:
+     - Username: admin
+     - Password: password
+   - This should take you to the users' page.
+
+3. **Navigation:**
+   - At the top left, there should be an option to "View List," click on it.
+
+4. **View Single User:**
+   - Click on any user's name from the list to view the details of a single user.
+
+5. **Add, Update, Delete User:**
+   - On the admin page, perform actions such as adding, updating, or deleting a user using the provided functionalities.
+
+6. **Navigate to Products Page:**
+   - Click on the link at the top of the page to navigate to the products page.
+
+7. **View Product Details:**
+   - Click on an item to go to the product detail page.
+
+8. **Delete Product:**
+   - Use the product delete API to delete an item on the admin page.
+
+9. **Validate Deletion:**
+   - Go back to the list to validate that the product is no longer there using the admin page.
+
 ### Technologies Used
 
 - **Frontend:** HTML , CSS , Tailwind CSS

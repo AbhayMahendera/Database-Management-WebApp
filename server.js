@@ -162,6 +162,25 @@ app.post('/admin/deleteUser', async (req, res) => {
   }
 });
 
+
+// ----------------- userDetails -> Edit --------------------- //
+
+app.post('/updateUser', async (req, res) => {
+  try {
+      const { id, firstname, lastname, email, dob, company, phone } = req.body;
+
+      // Call the updateUser function from sequelize.js
+      await updateUser(id, firstname, lastname, email, null, dob, phone, company);
+
+      res.redirect(`/user/${id}`); // Redirect to the user details page after updating
+  } catch (error) {
+      console.error('Error updating user:', error);
+      res.status(500).send('Error updating user');
+  }
+});
+
+
+
                                           // ------------------------ server --------------------- //
 
 
