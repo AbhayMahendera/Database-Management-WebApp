@@ -49,13 +49,13 @@ Simply follow the provided link to experience the live application. Remember to 
    - On the admin page, perform actions such as adding, updating, or deleting a user using the provided functionalities.
 
 6. **Navigate to Products Page:**
-   - Click on the link at the top of the page to navigate to the products page.
+   - At the top left, there should be an option to "View List," click on it.
 
 7. **View Product Details:**
-   - Click on an item to go to the product detail page.
+   On the admin page, perform actions such as adding, updating, or deleting using the provided functionalities.
 
 8. **Delete Product:**
-   - Use the product delete API to delete an item on the admin page.
+   -On the admin page, perform actions such as adding, updating, or deleting using the provided functionalities.
 
 9. **Validate Deletion:**
    - Go back to the list to validate that the product is no longer there using the admin page.
