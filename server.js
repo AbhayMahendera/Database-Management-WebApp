@@ -6,7 +6,7 @@ const ejs = require('ejs');
 const apiRouter = require('./routes/apiRouter');
 const bodyParser = require("body-parser");
 const {sequelize,users} = require('./sequelize');
-
+const session = require("express-session");
 
                                                   // Create an Express application
 const app = express();
@@ -16,6 +16,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
+
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+app.use(session({
+  secret: 'ec2b8cf63a1e5e6a91e8c05f5d98b8fd764cb6c2c38c007fa687c5a1771a9ec1',
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize, 
+  }),
+  cookie: { secure: true },
+}));
 
 
                                          // ------------------------ admin --------------------- //
@@ -58,9 +70,11 @@ app.post('/login', async (req, res) => {
   const isAdminAuthenticated = await loginVerify(email, password, 'admins');
 
   if (isAuthenticated) {
+    req.session.user = { email, role: 'user' };
     // Redirect to the user list page if user credentials are valid
     res.redirect('/valid');
   } else if (isAdminAuthenticated) {
+    req.session.user = { email, role: 'admin' };
     // Redirect to the admin page if admin credentials are valid
     res.redirect('/admin');
   } else {
