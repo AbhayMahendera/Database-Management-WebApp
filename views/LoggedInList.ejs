@@ -52,10 +52,10 @@
                 <!-- Pagination -->
                 <div class="mt-8 flex justify-center">
                     <% if (currentPage > 1) { %>
-                        <a href="/LoggedInList?page=<%= currentPage - 1 %>" class="text-white-500 hover:underline mr-4">Previous</a>
+                        <a href="/LoggedInList?page=<%= currentPage - 1 %>" class="text-white hover:underline mr-4">Previous</a>
                     <% } %>
                     <% if (users.length === 25) { %>
-                        <a href="/LoggedInList?page=<%= currentPage + 1 %>" class="text-white-500 hover:underline">Next</a>
+                        <a href="/LoggedInList?page=<%= currentPage + 1 %>" class="text-white hover:underline">Next</a>
                     <% } %>
                     
                 </div>

@@ -44,6 +44,10 @@ app.post('/searchUser', (req, res) => {
 
                                          // ------------------------ login --------------------- //
 
+app.get("/valid", (req, res) => { 
+   res.render("valid"); 
+  });
+
 app.post('/login', async (req, res) => {
   const { loginVerify } = require('./sequelize');
 
@@ -55,7 +59,7 @@ app.post('/login', async (req, res) => {
 
   if (isAuthenticated) {
     // Redirect to the user list page if user credentials are valid
-    res.redirect('/LoggedInList');
+    res.redirect('/valid');
   } else if (isAdminAuthenticated) {
     // Redirect to the admin page if admin credentials are valid
     res.redirect('/admin');

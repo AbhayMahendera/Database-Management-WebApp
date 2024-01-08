@@ -6,79 +6,54 @@
     <title>Admin Panel</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <div id="notification-container"></div>
-
     <style>
-
-.logout-button {
-    background-color: #ff0000;
-    color: #ffffff; 
-    padding: 8px 16px; 
-    border-radius: 7px; 
-    text-decoration: none; 
-    position:relative;
-}
-
-.logout-button:hover {
-    background-color: #cc0000; /* Darker red on hover */
-}
-
-
         body {
             background: url('media/admin2.jpg') no-repeat center center fixed;
             background-size: cover;
         }
-
+    
         .glass-bg {
             background: rgba(255, 255, 255, 0.053);
             backdrop-filter: blur(40px);
-            
         }
-        .marquee-text {
-            white-space: nowrap;
-            overflow: hidden;
-            box-sizing: border-box;
-            animation: flashAnimation 2s infinite alternate;
+    
+        .logout-button {
+            background-color: #ff0000;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 7px;
+            text-decoration: none;
         }
-
-        @keyframes flashAnimation {
-            0% {
-                color: red;
-            }
-
-            25% {
-                color: rgb(255, 0, 221);
-            }
-            50% {
-                color: rgb(36, 255, 69);
-            }
-
-            75% {
-                color: rgb(238, 255, 7);
-            }
-            100% {
-                color: rgb(255, 255, 255);
-            }}
-     
-       
+    
+        .logout-button:hover {
+            background-color: #cc0000; /* Darker red on hover */
+        }
+    
+        .info-section {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
     </style>
+    
 </head>
 <body class="font-sans text-gray-900 antialiased">
     <div class="marquee-text  bg-black p-2">
-        <marquee behavior="scroll" direction="left">
-            This admin panel is made temporarily for Assignment 5. More changes will be made. I have finals upcoming and some other subject projects too, so had a tight deadline. Improvements will keep coming. Thanks.
-        </marquee>
+        
     </div>
-    <div class="mb-8 bg-white bg-opacity-80 p-6 rounded-lg shadow-md">
-        <h3 class="text-xl font-semibold mb-4">Additional Information:</h3>
-        <p>You can perform CRUD functions in the menu on the right. You can add, view, update, or delete any user. To verify that changes have been made, click on "View List" to verify or search by the username you added. Try adding a user with an ID greater than 2000. (I'll add auto-increment in the next update to prevent common IDs).</p>
+    <div class="mb-8 bg-gray-800 bg-opacity-80 p-4  shadow-md">
+        <p class="text-white">This web page currently offers CRUD functions on the database. More features will be added soon.</p>
     </div>
+    
     
     <div class="flex h-screen">
         <!-- Sidebar -->
         <aside class="w-1/4 bg-blue-500 p-6 glass-bg">
             <h1 class="text-2xl font-bold text-white mb-6">Admin Panel</h1>
             <ul>
-                <li><a href="/LoggedInList" class="text-white">View List</a></li>
+                <li><a href="/LoggedInList" class="text-white">View All Users</a></li>
                 <li><a href="#" class="text-white">upcoming...</a></li>
                 <li><a href="#" class="text-white">upcoming...</a></li>
                 <li><a href="#" class="text-white">upcoming...</a></li>
@@ -177,11 +152,6 @@
               
 
 
-                <!-- Transactions Section -->
-                <section>
-                    <h3 class="text-xl font-semibold mb-4">WILL SETUP  LATER</h3>
-                    <p>WILL SETUP LATER.</p>
-                </section>
             </div>
         </main>
     </div>
@@ -193,10 +163,9 @@
   <% } %>
   
 
-  <div class="absolute top-0 right-0 mt-4 mr-4">
+  <div class="absolute top-4 right-4">
     <a href="/index.html" class="logout-button">Logout</a>
 </div>
-
 
 </body>
 
