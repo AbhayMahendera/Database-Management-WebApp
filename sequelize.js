@@ -91,6 +91,40 @@ const users = sequelize.define('users', {
     timestamps: false,
   });
 
+
+  // ---------- Products ------------- //
+
+  const products = sequelize.define('products', {
+    productid: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    brand: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    price: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+    },
+    userid: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'users',
+        key: 'id',
+      },
+    },
+  }, {
+    timestamps: false,
+  });
+
+  
 //    ----------------------------- SYNC -----------------------------    //
 sequelize.sync()
   .then(() => {
@@ -104,6 +138,8 @@ sequelize.sync()
 
   //    ----------------------------- CREATE  -----------------------------    //
 
+
+  
 
 
   async function createUser(id, firstname, lastname, email, password, dob, phone, company) {
